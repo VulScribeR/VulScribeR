@@ -1,0 +1,1 @@
+python reveal_embed.py --dataset embed_devign_reveal --input_dir ./demo/ --node_tag node_features --graph_tag graph --label_tag targets
