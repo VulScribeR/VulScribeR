@@ -9,3 +9,6 @@
 4) Diversity calculation using entropy -> diversity_calculation.ipynb
 
 Finally, (or after step 3) the augmented dataset will be available in ./container_data/train (for Devign and Reveal) and in the form of a jsonl file for training Linevul (step 4 uses the same jsonl file)
+
+## Notes
+- Joern requires building (before executing ./joern-parse "some dir") and the repo does not contain the binaries and jar files. Alternatively, the fully built version can be downloaded from [here](https://github.com/VulScribeR/VulScribeR/releases/download/Release/joern.zip)
