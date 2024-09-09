@@ -1,5 +1,8 @@
 # Help
 
+## Notes
+- Create the [Devign](https://github.com/VulScribeR/VulScribeR/blob/main/requirements-devign-env.txt) and [Reveal](https://github.com/VulScribeR/VulScribeR/blob/main/requirements-reveal-env.txt) environments using the requirement files at the project's root.
+
 
 ## Devign
 0. run "conda activate reveal" for preprocessing
