@@ -1,6 +1,8 @@
 # Help
 
-Train with run-train.sh, test with run-test.sh. Finally use result_analyzer.ipynb to calculate Accruacy, AUC, P, R, and F1
+Train with run-train.sh, test with run-test.sh. Finally use result_analyzer.ipynb to calculate Accruacy, AUC, P, R, and F1.
+
+-> The [Default/Linevul](https://github.com/VulScribeR/VulScribeR/blob/main/requirements-linevul-env.txt) requirements file can be used for the environment.
 
 ##
 Sources:
