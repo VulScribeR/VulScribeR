@@ -2,7 +2,7 @@
 
 ## Notes
 - Create the [Devign](https://github.com/VulScribeR/VulScribeR/blob/main/requirements-devign-env.txt) and [Reveal](https://github.com/VulScribeR/VulScribeR/blob/main/requirements-reveal-env.txt) environments using the requirement files at the project's root.
-
+- Certain files were discarded during the commit. Download ['raw_code_deb_chro.100.wv.vectors.npy'](https://github.com/VulScribeR/VulScribeR/releases/download/Release/raw_code_deb_chro.100.wv.vectors.npy) and ['raw_code_deb_chro.100.trainables.syn1neg.npy'](https://github.com/VulScribeR/VulScribeR/releases/download/Release/raw_code_deb_chro.100.trainables.syn1neg.npy) and put them in the `/preprocessing/data_processing/` directory, so the `bash get_ggnn_input.sh` command can run properly.
 
 ## Devign
 0. run "conda activate reveal" for preprocessing
