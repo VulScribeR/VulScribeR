@@ -92,7 +92,7 @@ public class DatasetUtils {
         return dataset;
     }
 
-    public static Dataset readFormattedVulsBigVul(String path) throws Exception {
+    public static Dataset readFormattedVuls(String path) throws Exception {
         Dataset dataset = new Dataset();
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -121,7 +121,7 @@ public class DatasetUtils {
         return dataset;
     }
 
-    public static Dataset readCleanBigvul(String path) throws Exception {
+    public static Dataset readCleanFromJson(String path) throws Exception {
         Dataset dataset = new Dataset();
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -135,14 +135,22 @@ public class DatasetUtils {
                     JsonNode clean = jsonNode.get("processed_func");
                     if (index != null && clean != null) {
                         dataset.addPair(index.asText(), extractMethodHeader(clean.asText()), clean.asText());
+                    } else {
+                        System.out.println("Wrong!");
                     }
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error reading CSV file: " + e.getMessage());
+            System.err.println("Error reading JSON file: " + e.getMessage());
         }
         return dataset;
     }
+
+    public static Dataset readCleanPrimeVul() throws Exception {
+        return readCleanFromJson("../container_data/primevul_train_cleaned_complete.jsonl");
+    }
+
+
 
     @Deprecated
     public static Dataset readFixedVulBigVulCsv(String path) throws Exception {
@@ -165,11 +173,15 @@ public class DatasetUtils {
     }
 
     public static Dataset readCleanBigvul() throws Exception {
-        return readCleanBigvul("../container_data/bigvul-train.jsonl");
+        return readCleanFromJson("../container_data/bigvul-train.jsonl");
     }
 
     public static Dataset readFormattedVulsBigVul() throws Exception {
-        return readFormattedVulsBigVul("../container_data/bigvul-train.jsonl");
+        return readFormattedVuls("../container_data/bigvul-train.jsonl");
+    }
+
+    public static Dataset readFormattedVulsPrimeVul() throws Exception {
+        return readFormattedVuls("../container_data/primevul_train_cleaned_paired_full.jsonl");
     }
 
     public static Dataset readAllClean() throws Exception {
