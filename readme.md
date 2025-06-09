@@ -2,6 +2,21 @@
 
 Official repository for our paper:
 > *VulScribeR: Exploring RAG-based Vulnerability Augmentation with LLMs*
+
+If you find this project useful in your research, please consider citing:
+
+```
+@misc{daneshvar2024exploringragbasedvulnerabilityaugmentation,
+      title={Exploring RAG-based Vulnerability Augmentation with LLMs}, 
+      author={Seyed Shayan Daneshvar and Yu Nong and Xu Yang and Shaowei Wang and Haipeng Cai},
+      year={2024},
+      eprint={2408.04125},
+      archivePrefix={arXiv},
+      primaryClass={cs.SE},
+      url={https://arxiv.org/abs/2408.04125}, 
+}
+```
+
 ## Datasets
 
 ### Primary Datasets
