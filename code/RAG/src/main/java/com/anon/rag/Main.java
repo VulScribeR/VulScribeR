@@ -23,6 +23,10 @@ public class Main {
 
     static List<SearchResult> uniqueDummySearch(Dataset cleans) throws Exception {
         Dataset vulsDataset = DatasetUtils.readFormattedVulsBigVul();
+        return uniqueDummySearch(cleans, vulsDataset);
+    }
+
+    static List<SearchResult> uniqueDummySearch(Dataset cleans, Dataset vulsDataset) throws Exception {
         ArrayList<CodeSnippet> vuls = new ArrayList<>(vulsDataset.getDataset().values());
         ArrayList<CodeSnippet> cleanItems = new ArrayList<>(cleans.getDataset().values());
         Collections.shuffle(vuls);
@@ -80,7 +84,23 @@ public class Main {
 
     static LuceneCodeSearchFacade indexCluster(int clusterNumber) throws Exception {
         String address = "../container_data/bigvul_vuls_cls_" + clusterNumber + ".jsonl";
-        Dataset fixedVuls = DatasetUtils.readFormattedVulsBigVul(address);
+        Dataset fixedVuls = DatasetUtils.readFormattedVuls(address);
+        LuceneCodeSearchFacade lucene = new LuceneCodeSearchFacade();
+        lucene.index(fixedVuls.getDataset().values());
+        return lucene;
+    }
+
+    static LuceneCodeSearchFacade indexPrimeVulCluster(int clusterNumber) throws Exception { // only flaw line ones
+        String address = "../container_data/primevul_vuls_cls_" + clusterNumber + "_flaw_only.jsonl";
+        Dataset fixedVuls = DatasetUtils.readFormattedVuls(address);
+        LuceneCodeSearchFacade lucene = new LuceneCodeSearchFacade();
+        lucene.index(fixedVuls.getDataset().values());
+        return lucene;
+    }
+
+    static LuceneCodeSearchFacade indexFullPrimeVulCluster(int clusterNumber) throws Exception {
+        String address = "../container_data/primevul_vuls_cls_" + clusterNumber + ".jsonl";
+        Dataset fixedVuls = DatasetUtils.readFormattedVuls(address);
         LuceneCodeSearchFacade lucene = new LuceneCodeSearchFacade();
         lucene.index(fixedVuls.getDataset().values());
         return lucene;
@@ -177,6 +197,33 @@ public class Main {
         writeToJson(ClusteredSearchWithFunction(indexPerCluster, cleans), "results_full_code2code_clustered.json");
     }
 
+    static void generateNaivePrimeVulFunctionClustered() throws Exception {
+        Dataset cleans = DatasetUtils.readCleanPrimeVul();
+        List<LuceneCodeSearchFacade> indexPerCluster = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            indexPerCluster.add(indexPrimeVulCluster(i));
+        }
+        writeToJson(ClusteredSearchWithFunction(indexPerCluster, cleans), "results_full_code2code_clustered_primevul_fo.json");
+    }
+
+    static void generateNaivePrimeVulFunctionClusteredWithDevignCleans() throws Exception {
+        Dataset cleans = DatasetUtils.readCleanDevign();
+        List<LuceneCodeSearchFacade> indexPerCluster = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            indexPerCluster.add(indexPrimeVulCluster(i));
+        }
+        writeToJson(ClusteredSearchWithFunction(indexPerCluster, cleans), "results_full_code2code_clustered_primevul_fo_devign.json");
+    }
+
+    static void generateNaivePrimeVulFunctionClusteredFull() throws Exception {
+        Dataset cleans = DatasetUtils.readCleanPrimeVul();
+        List<LuceneCodeSearchFacade> indexPerCluster = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            indexPerCluster.add(indexFullPrimeVulCluster(i));
+        }
+        writeToJson(ClusteredSearchWithFunction(indexPerCluster, cleans), "results_full_code2code_clustered_primevul.json");
+    }
+
     static void generateNaiveDevignAndBigVulFunction() throws Exception {
         Dataset cleans = DatasetUtils.readAllClean();
         writeToJson(indexAndSearchWithFunction(cleans), "results_full_code2code_ext.json");
@@ -190,6 +237,12 @@ public class Main {
     static void generateUniqueRandom() throws Exception {
         Dataset cleans = DatasetUtils.readCleanDevign();
         writeToJson(uniqueDummySearch(cleans), "results_random.json");
+    }
+
+    static void generateUniqueRandomPrimeVul() throws Exception {
+        Dataset cleans = DatasetUtils.readCleanPrimeVul();
+        Dataset vuls =  DatasetUtils.readFormattedVulsPrimeVul();
+        writeToJson(uniqueDummySearch(cleans,  vuls), "results_random_pv.json");
     }
 
     static void generateRandom() throws Exception {
@@ -206,11 +259,13 @@ public class Main {
 
         System.out.println("Index N Search");
         // generateUniqueRandom(); # for mutation strategy
+        // generateUniqueRandomPrimeVul();
         // generateRandom(); // for random matching with replacement - for w/o retriever settings
-        generateNaiveDevignFunction();   //for matching only based on similaritya - no clustering
+        // generateNaiveDevignFunction();   //for matching only based on similaritya - no clustering
         // generateNaiveDevignFunctionClustered();    //for all the clustered strategies 
-        
-        
+        // generateNaivePrimeVulFunctionClustered();
+        generateNaivePrimeVulFunctionClusteredWithDevignCleans();
+
         // other experiments
         // generateNaiveDevignFullHeader();
         // generateNaiveDevignAndBigVulFunction();
