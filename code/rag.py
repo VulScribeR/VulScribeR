@@ -104,8 +104,21 @@ def read_naive_code2code_rag():
 def read_naive_code2code_clustered_rag():
     return read_rag("results_full_code2code_clustered")
 
-def read_random():
-    return read_rag("results_random")
+def read_naive_code2code_clustered_rag_primevul(fo = False):
+    if fo:
+        return read_rag("results_full_code2code_clustered_primevul_fo")
+    else:
+        return read_rag("results_full_code2code_clustered_primevul")
+
+def read_naive_code2code_clustered_rag_primevul_devigncleans():
+    return read_rag("results_full_code2code_clustered_primevul_fo_devign")
+
+def read_random(pv = False):
+    if pv:
+        print("read PrimeVul Variant")
+        return read_rag("results_random_pv")
+    else:
+        return read_rag("results_random")
 
 def read_random_fair():
     return read_rag("results_random_fair")
