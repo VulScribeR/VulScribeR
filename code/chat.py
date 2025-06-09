@@ -219,7 +219,9 @@ class ChatGPTPrompter:
         openai.api_key = api_key
         self.messages = None
         self.system_message = system_message
-
+        # self.model = "gpt-3.5-turbo"
+        self.model = "gpt-4o-mini"
+        print(f"Model Selected: {self.model}")
     # clean initially, it is always dirty after use
     def prompt(self, message, clean=True, show=False, t=0.5):
         # print(t)
@@ -229,13 +231,13 @@ class ChatGPTPrompter:
                 {"role": "system", "content": self.system_message},
             ]
             chat_completion = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo", messages=self.messages, temperature=t)
+                model=self.model, messages=self.messages, temperature=t)
             reply = chat_completion["choices"][0]["message"]["content"]
             self.messages.append({"role": "assistant", "content": reply})
 
         self.messages.append({"role": "user", "content": message})
         chat_completion = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo", messages=self.messages)
+            model=self.model, messages=self.messages)
         reply = chat_completion["choices"][0]["message"]["content"]
         self.messages.append({"role": "assistant", "content": reply})
 
@@ -243,6 +245,7 @@ class ChatGPTPrompter:
             print(reply)
 
         return reply
+
 
 
 class PromptUtils:
