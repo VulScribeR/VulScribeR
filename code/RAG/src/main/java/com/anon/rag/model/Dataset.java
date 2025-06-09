@@ -18,7 +18,9 @@ public class Dataset {
 
     public void addPair(String id, String header, String full) {
         int bodyIndex = full.indexOf("{");
-        addPair(id, new CodeSnippet(id ,header, full.substring(bodyIndex).trim()));
+        if (bodyIndex > 0 ) {
+            addPair(id, new CodeSnippet(id ,header, full.substring(bodyIndex).trim()));
+        }
     }
 
     public void addPair(String id, CodeSnippet snippet) {
