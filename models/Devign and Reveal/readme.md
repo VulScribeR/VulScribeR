@@ -28,4 +28,4 @@ Reveal is in the representation_learning directory. Reveal uses Devign's preproc
 
 
 ## Source
-(Vulgen's Artifacts)[https://zenodo.org/records/7552876]
+[Vulgen's Artifacts](https://zenodo.org/records/7552876)
