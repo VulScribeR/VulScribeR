@@ -1,8 +1,8 @@
 # Official Source Code of VulScribeR
 
 ## Important Notes
-- Joern requires building (before executing ./joern-parse "some dir") and the repo does not contain the binaries and jar files. Alternatively, the fully built version can be downloaded from [here](https://github.com/VulScribeR/VulScribeR/releases/download/Release/joern.zip)
-- For the filtering step (Joern), the [Reveal](https://github.com/VulScribeR/VulScribeR/blob/main/requirements-reveal-env.txt) environment can be used, and for the other steps the [Default/Linevul](https://github.com/VulScribeR/VulScribeR/blob/main/requirements-linevul-env.txt) environment can be used.
+- Joern requires building (before executing ./joern-parse "some dir") and the repo does not contain the binaries and jar files. Alternatively, the fully built version can be downloaded from [here](https://github.com/shayandaneshvar/VulScribeR/releases/download/Release/joern.zip)
+- For the filtering step (Joern), the [Reveal](https://github.com/shayandaneshvar/VulScribeR/blob/main/requirements-reveal-env.txt) environment can be used, and for the other steps the [Default/Linevul](https://github.com/shayandaneshvar/VulScribeR/blob/main/requirements-linevul-env.txt) environment can be used.
 - For RQ4, You should manually use data_selection to oversample both the original and vulnerable samples. In our experiment, oversampling vulnerable samples was used with a ratio of 3:2 (three original vulnerable samples for every two augmented samples). 3:2 worked better than 2:1 and 1:1 overall.
   
 ## Replication Steps 
