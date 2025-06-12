@@ -1,8 +1,8 @@
 # Help
 
 ## Notes
-- Create the [Devign](https://github.com/VulScribeR/VulScribeR/blob/main/requirements-devign-env.txt) and [Reveal](https://github.com/VulScribeR/VulScribeR/blob/main/requirements-reveal-env.txt) environments using the requirement files at the project's root.
-- Certain files were discarded during the commit. Download ['raw_code_deb_chro.100.wv.vectors.npy'](https://github.com/VulScribeR/VulScribeR/releases/download/Release/raw_code_deb_chro.100.wv.vectors.npy) and ['raw_code_deb_chro.100.trainables.syn1neg.npy'](https://github.com/VulScribeR/VulScribeR/releases/download/Release/raw_code_deb_chro.100.trainables.syn1neg.npy) and put them in the `/preprocessing/data_processing/` directory, so the `bash get_ggnn_input.sh` command can run properly.
+- Create the [Devign](https://github.com/shayandaneshvar/VulScribeR/blob/main/requirements-devign-env.txt) and [Reveal](https://github.com/shayandaneshvar/VulScribeR/blob/main/requirements-reveal-env.txt) environments using the requirement files at the project's root.
+- Certain files were discarded during the commit. Download ['raw_code_deb_chro.100.wv.vectors.npy'](https://github.com/shayandaneshvar/VulScribeR/releases/download/Release/raw_code_deb_chro.100.wv.vectors.npy) and ['raw_code_deb_chro.100.trainables.syn1neg.npy'](https://github.com/shayandaneshvar/VulScribeR/releases/download/Release/raw_code_deb_chro.100.trainables.syn1neg.npy) and put them in the `/preprocessing/data_processing/` directory, so the `bash get_ggnn_input.sh` command can run properly.
 - Devign's script will process the training/test/validation files and write them to the demo directory. After processing, the same files can be used to run the `reveal_embed.sh` script. (or one might use it directly, but then the training/testing/validation sources should be updated accordingly in that file)
 
 ## Devign
